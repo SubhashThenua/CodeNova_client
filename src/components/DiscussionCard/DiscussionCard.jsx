@@ -114,7 +114,7 @@ const DiscussionCard = ({ item }) => {
 
         config
       );
-      console.log("LLLlllllllllllllllll");
+      // console.log("LLLlllllllllllllllll");
       // console.log(data.user);
       const isbookmarked = await data.user[0].bookmarkChats.includes(item._id);
 

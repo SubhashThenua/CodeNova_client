@@ -29,7 +29,7 @@ const Me = () => {
   const { slug } = useParams();
   const { user } = ChatState();
   const [viewUser, setViewUser] = useState(null);
-  console.log(slug);
+  // console.log(slug);
 
   const pageLoad = async () => {
     try {
@@ -47,7 +47,7 @@ const Me = () => {
         config
       );
 
-      console.log(data.user);
+      // console.log(data.user);
       setViewUser(data.user[0]);
     } catch (error) {
       console.error(error);

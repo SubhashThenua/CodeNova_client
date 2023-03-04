@@ -16,8 +16,8 @@ const Login = () => {
 
   const login = async (e) => {
     e.preventDefault();
-    console.log(username);
-    console.log(password);
+    // console.log(username);
+    // console.log(password);
 
     if (!password || !username) {
       toast.error("Enter all the field", {
@@ -37,7 +37,7 @@ const Login = () => {
         );
         const fdata = await data.token;
         if (fdata) {
-          console.log(data);
+          // console.log(data);
           localStorage.setItem("userInfo", JSON.stringify(data));
           navigate("/me");
           toast.success("Logged in successfully!", {

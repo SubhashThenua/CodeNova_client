@@ -18,7 +18,7 @@ const SignUp = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword || !password || !name) {
-      console.log("password do no match");
+      // console.log("password do no match");
       toast.error("Passwords do not match!", {
         autoClose: 1000,
       });

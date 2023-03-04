@@ -18,8 +18,8 @@ const Chat = () => {
 
   useEffect(() => {
     socket = io(ENDPOINT);
-    console.log(socket);
-    console.log(JSON.parse(localStorage.getItem("userInfo")).data.user);
+    // console.log(socket);
+    // console.log(JSON.parse(localStorage.getItem("userInfo")).data.user);
     socket.emit(
       "setup",
       JSON.parse(localStorage.getItem("userInfo")).data.user

@@ -60,7 +60,8 @@ const ChatName = () => {
           >
             <p className="text">
               {chat.users[0]
-                ? chat.users[0].name === user.data.user.name
+                ? chat.users[0].name ===
+                  JSON.parse(localStorage.getItem("userInfo")).data.user.name
                   ? chat.users[1].name
                   : chat.users[0].name
                 : ""}

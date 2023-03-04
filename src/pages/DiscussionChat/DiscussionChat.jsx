@@ -40,7 +40,7 @@ const DiscussionChat = () => {
   };
 
   const faltu = () => {
-    console.log("");
+    // console.log("");
   };
 
   const handleUpVote = async () => {

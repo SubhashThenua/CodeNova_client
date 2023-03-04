@@ -52,9 +52,10 @@ const DiscussionAnswer = ({ item }) => {
       );
       setUp(data.upvotes);
       setDown(data.downvotes);
-      console.log(data);
+      // console.log(data);
     } catch (err) {
-      console.error(err);
+      // console.error(err);
+      alert("error");
     }
   };
 
@@ -77,7 +78,7 @@ const DiscussionAnswer = ({ item }) => {
       setUp(data.upvotes);
       // console.log(data);
     } catch (err) {
-      console.error(err);
+      alert("error");
     }
   };
 

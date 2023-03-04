@@ -11,7 +11,7 @@ const AdminChat = () => {
   const [newMessage, setNewMessage] = useState("");
   const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
   const handleclick = async () => {
-    console.log(selectedChat);
+    // console.log(selectedChat);
 
     try {
       if (newMessage) {
@@ -30,7 +30,7 @@ const AdminChat = () => {
           },
           config
         );
-        console.log(data);
+        // console.log(data);
 
         setMessages([...messages, data]);
       }

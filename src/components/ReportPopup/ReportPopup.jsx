@@ -21,7 +21,7 @@ const ReportPopup = ({ item }) => {
         { content: query, chatId: item._id },
         config
       );
-      console.log(data);
+      // console.log(data);
       setQuery("");
     } catch (error) {
       console.log(error);
