@@ -19,7 +19,7 @@ const MessageBox = () => {
         <button
           type="submit"
           className="btn"
-          // onClick={() => console.log("send")}
+          onClick={() => console.log("send")}
         >
           Send
         </button>

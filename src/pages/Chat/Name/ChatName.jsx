@@ -32,7 +32,7 @@ const ChatName = () => {
       setChats(data);
     } catch (error) {
       console.log(error);
-      alert(error);
+      // alert(error);
     }
   };
 
@@ -59,9 +59,25 @@ const ChatName = () => {
             }}
           >
             <p className="text">
+              <div className="profile-pic-2">
+                {chat.users[0] ? (
+                  chat.users[0].name === user.data.user.name ? (
+                    <img
+                      src={chat.users[1].photo ? chat.users[1].photo : ""}
+                      alt="sender-image"
+                    />
+                  ) : (
+                    <img
+                      src={chat.users[0].photo ? chat.users[0].photo : ""}
+                      alt="sender-image"
+                    />
+                  )
+                ) : (
+                  ""
+                )}
+              </div>
               {chat.users[0]
-                ? chat.users[0].name ===
-                  JSON.parse(localStorage.getItem("userInfo")).data.user.name
+                ? chat.users[0].name === user.data.user.name
                   ? chat.users[1].name
                   : chat.users[0].name
                 : ""}

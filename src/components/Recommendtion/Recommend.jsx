@@ -14,9 +14,9 @@ const Recommend = () => {
       });
       setData(fdata.data);
       setLoading(false);
-      // console.log(fdata.data);
+      console.log(fdata.data);
     } catch (error) {
-      // console.log(error);
+      console.log(error);
       alert("user not found");
       setLoading(false);
       setError(true);

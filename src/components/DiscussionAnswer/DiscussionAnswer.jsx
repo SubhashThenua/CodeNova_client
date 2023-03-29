@@ -52,10 +52,9 @@ const DiscussionAnswer = ({ item }) => {
       );
       setUp(data.upvotes);
       setDown(data.downvotes);
-      // console.log(data);
+      console.log(data);
     } catch (err) {
-      // console.error(err);
-      alert("error");
+      console.error(err);
     }
   };
 
@@ -78,7 +77,7 @@ const DiscussionAnswer = ({ item }) => {
       setUp(data.upvotes);
       // console.log(data);
     } catch (err) {
-      alert("error");
+      console.error(err);
     }
   };
 
@@ -92,19 +91,21 @@ const DiscussionAnswer = ({ item }) => {
         <p>{item.content ? item.content : ""}</p>
       </div>
 
-      <pre
-        className="discussion-chat-question-code"
-        onClick={(e) => {
-          e.preventDefault();
-          navigator.clipboard.writeText(e.target.textContent);
-          toast.success("Text copied!", {
-            autoClose: 1000,
-          });
-        }}
-      >
-        <code>{`${item.code ? item.code : ""}`}</code>
-        <BiCopy className="copy-icon" />
-      </pre>
+      {item.code && (
+        <pre
+          className="discussion-chat-question-code"
+          onClick={(e) => {
+            e.preventDefault();
+            navigator.clipboard.writeText(e.target.textContent);
+            toast.success("Text copied!", {
+              autoClose: 1000,
+            });
+          }}
+        >
+          <code>{`${item.code ? item.code : ""}`}</code>
+          <BiCopy className="copy-icon" />
+        </pre>
+      )}
 
       <div className="discussion-answer-details">
         <div>

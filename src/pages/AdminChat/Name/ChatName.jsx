@@ -22,11 +22,11 @@ const ChatName = () => {
         "https://codenova-api.onrender.com/api/v1/admin/all-chats",
         config
       );
-      // console.log(data);
+      console.log(data);
       setChats(data.chats);
     } catch (error) {
       console.log(error);
-      alert(error);
+      // alert(error);
     }
   };
 
@@ -44,7 +44,7 @@ const ChatName = () => {
             key={chat._id}
             onClick={() => {
               setSelectedChat(chat);
-              // console.log(chat._id);
+              console.log(chat._id);
             }}
             style={{
               cursor: "pointer",

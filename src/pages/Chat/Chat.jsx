@@ -7,6 +7,8 @@ import AccessChat from "./AccessChat/AccessChat";
 import MessageBox from "./MessageBox/MessageBox";
 import axios from "axios";
 import io from "socket.io-client";
+import { useNavigate } from "react-router-dom";
+import TextField from "@mui/material/TextField";
 
 const ENDPOINT = "https://codenova-api.onrender.com/";
 var socket, selectedChatCompare;
@@ -14,15 +16,27 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [socketConnected, setSocketConnected] = useState(false);
-  const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
-
+  const {
+    selectedChat,
+    setSelectedChat,
+    user,
+    chats,
+    setChats,
+    isUserLoggedIn,
+  } = ChatState();
+  const navigate = useNavigate();
   useEffect(() => {
+    if (!isUserLoggedIn.current) {
+      navigate("/login");
+    }
     socket = io(ENDPOINT);
-    // console.log(socket);
+    console.log(socket);
     // console.log(JSON.parse(localStorage.getItem("userInfo")).data.user);
     socket.emit(
       "setup",
-      JSON.parse(localStorage.getItem("userInfo")).data.user
+      JSON.parse(localStorage.getItem("userInfo"))
+        ? JSON.parse(localStorage.getItem("userInfo")).data.user
+        : ""
     );
     socket.on("connected", () => setSocketConnected(true));
     // socket.on("typing", () => setIsTyping(true));
@@ -58,20 +72,21 @@ const Chat = () => {
     }
   };
 
-  useEffect(() => {
-    socket.on("message recieved", (newMessageReceived) => {
-      // console.log("oooooooooooooooooooooooooooooooooooooooooooooooo");
-      if (
-        !selectedChatCompare ||
-        selectedChatCompare._id !== newMessageReceived.chat._id
-      ) {
-        //notification
-      } else {
-        // console.log(newMessageReceived);
-        setMessages([...messages, newMessageReceived]);
-      }
-    });
-  });
+  // useEffect(() => {
+  //   socket.on("message recieved", (newMessageReceived) => {
+  //     // console.log("oooooooooooooooooooooooooooooooooooooooooooooooo");
+  //     if (
+  //       !selectedChatCompare ||
+  //       selectedChatCompare._id !== newMessageReceived.chat._id
+  //     ) {
+  //       //notification
+  //     } else {
+  //       console.log("=-----------new------------=");
+  //       console.log(newMessageReceived);
+  //       setMessages([...messages, newMessageReceived]);
+  //     }
+  //   });
+  // });
   return (
     <div className="chat-box">
       <div className="chatName">
@@ -95,6 +110,16 @@ const Chat = () => {
           }}
           onChange={(e) => setNewMessage(e.target.value)}
         />
+        {/* <TextField
+          id="filled-basic"
+          label=""
+          variant="outlined"
+          className="messageBox"
+          value={newMessage}
+          onChange={(e) => {
+            setNewMessage(e.target.value);
+          }}
+        /> */}
         <button
           className="btn"
           style={{
