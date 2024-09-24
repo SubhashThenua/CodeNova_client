@@ -128,7 +128,7 @@ const DiscussionChat = () => {
 
   const handleClick = async () => {
     if (answer === "") {
-      toast.error("Enter Your Answer", {
+      toast.error("Enter Your Answer.", {
         autoClose: 2000,
       });
     } else {
@@ -141,7 +141,7 @@ const DiscussionChat = () => {
             }`,
           },
         };
-        toast.success("Answer submitted successfully", {
+        toast.success("Answer submitted successfully!", {
           autoClose: 2000,
         });
         const { data } = await axios.post(
